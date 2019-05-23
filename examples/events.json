@@ -1,0 +1,57 @@
+{
+  "events": [
+    {
+      "config": {
+	"newSeed": true,
+	"duration": 1
+      },
+      "data": {
+	"command": "createUser",
+	"timeStamp": '{Date().UnixNano()}}',
+	"eventData": {
+	  "userName": '{{Username()}}',
+	  "firstName": '{{FirstName()}}',
+	  "lastName": '{{LastName()}}',
+	  "uuid": '{{UUID()}}',
+	  "house": '{{RandString(string[]{"Stark", "Lannister", "Targaryen"})}}'
+	}
+      }
+    },
+    {
+      "config": {
+	"newSeed": true,
+	"duration": 1
+      },
+      "data": {
+	"command": "createUser",
+	"timeStamp": '{{Date().UnixNano()}}',
+	"eventData": {
+	  "userName": '{{Username()}}',
+	  "firstName": '{{FirstName()}}',
+	  "lastName": '{{LastName()}}',
+	  "uuid": '{{UUID()}}',
+	  "house": '{{RandString(string[]{"Stark", "Lannister", "Targaryen"})}}' 
+	}
+      }
+    },
+    {
+      "config": {
+	"newSeed": false,
+	"duration": 1
+      },
+      "eventData": {
+	"command": "deleteUser",
+	"timeStamp": '{{Date().UnixNano()+1}}',
+	"data": {
+	  "userName": '{{Username()}}',
+	  "uuid": '{{UUID()}}'
+	}
+      }
+    }
+  ],
+  "workFlow": {
+    "runMode": "sequential",
+    "repeat": 3,
+    "timeout": 3
+}
+
